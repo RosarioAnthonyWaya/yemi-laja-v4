@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Yemi Laja — Worship Artist, Creative Director & Founder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/yemi-laja-v4/style.css">
+<style>
+/* Page Hero */
+  .page-hero {
+    padding: 12rem 4rem 6rem;
+    background: var(--linen);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::after {
+    content: 'YEMI';
+    position: absolute; right: 4rem; bottom: -1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12rem; font-weight: 300;
+    color: rgba(196,99,122,0.1);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .page-hero-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+  .page-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300; line-height: 1.05; }
+  .page-hero-title em { font-style: italic; color: var(--gold); }
+  .page-hero-sub { font-size: 1rem; line-height: 1.8; color: rgba(61,44,40,0.65); max-width: 500px; margin-top: 1.5rem; }
+/* Bio section */
+  #bio {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 6rem; align-items: start;
+    padding: 7rem 4rem;
+    background: var(--white);
+  }
+  .bio-image-stack { position: relative; }
+  .bio-image-main { width: 100%; display: block; filter: brightness(0.85); }
+  .bio-image-accent { position: absolute; bottom: -1.5rem; right: -1.5rem; width: 55%; border: 1px solid var(--gold); height: 55%; }
+  .bio-content {}
+  .bio-body { font-size: 1rem; line-height: 2; color: rgba(61,44,40,0.75); margin-bottom: 1.5rem; }
+  .bio-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; font-weight: 300; line-height: 1.55; color: var(--burgundy); margin: 2rem 0; padding-left: 1.5rem; border-left: 3px solid var(--rose); }
+
+  /* Journey Timeline */
+  #journey { padding: 7rem 4rem; background: var(--ivory); }
+  .timeline { margin-top: 3.5rem; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 180px; top: 0; bottom: 0; width: 1px; background: var(--stone); }
+  .timeline-item { display: grid; grid-template-columns: 180px 1fr; gap: 3rem; margin-bottom: 3rem; position: relative; }
+  .timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold); opacity: 0.6; text-align: right; padding-right: 2rem; padding-top: 0.2rem; }
+  .timeline-dot { position: absolute; left: 174px; top: 0.6rem; width: 13px; height: 13px; border-radius: 50%; background: var(--linen); border: 2px solid var(--gold); }
+  .timeline-content { padding-left: 2rem; }
+  .timeline-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.6rem; }
+  .timeline-desc { font-size: 0.9rem; line-height: 1.85; color: rgba(61,44,40,0.65); }
+
+  /* Philosophy */
+  #philosophy { padding: 7rem 4rem; background: var(--linen); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .philosophy-values { display: flex; flex-direction: column; gap: 0; margin-top: 2rem; }
+  .value-item { padding: 1.8rem 0; border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .value-item:first-child { border-top: 1px solid var(--border); }
+  .value-number { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .value-desc { font-size: 0.88rem; line-height: 1.8; color: var(--text-muted); }
+  .philosophy-image { position: relative; }
+  .philosophy-image img { width: 100%; display: block; filter: brightness(0.8); }
+
+  /* Brands */
+  #brands { padding: 5rem 4rem; background: var(--linen); text-align: center; }
+  .brands-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3rem; }
+  .brands-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2rem 4rem; }
+  .brand-item { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(61,44,40,0.25); transition: color 0.2s; }
+  .brand-item:hover { color: var(--gold); }
+
+  /* Social Links */
+  #social { padding: 5rem 4rem; background: var(--white); text-align: center; }
+  .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+  .social-link { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); border: 1px solid var(--stone); padding: 0.8rem 2rem; text-decoration: none; transition: all 0.2s; }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* CTA Banner */
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a href="/yemi-laja-v4/" class="nav-logo">Yemi <span>Laja</span></a>
+  <ul class="nav-links">
+    <li><a href="/yemi-laja-v4/about/" class="active">About</a></li>
+    <li><a href="/yemi-laja-v4/music/">Music & Media</a></li>
+    <li><a href="/yemi-laja-v4/programs/">Programs</a></li>
+    <li><a href="/yemi-laja-v4/events/">Events</a></li>
+    <li><a href="/yemi-laja-v4/contact/">Contact</a></li>
+  </ul>
+  <a href="/yemi-laja-v4/contact/#booking" class="nav-cta">Book Yemi</a>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileClose">✕</button>
+  <a href="/yemi-laja-v4/" onclick="closeNav()">Home</a>
+  <a href="/yemi-laja-v4/about/" onclick="closeNav()">About</a>
+  <a href="/yemi-laja-v4/music/" onclick="closeNav()">Music & Media</a>
+  <a href="/yemi-laja-v4/programs/" onclick="closeNav()">Programs</a>
+  <a href="/yemi-laja-v4/events/" onclick="closeNav()">Events</a>
+  <a href="/yemi-laja-v4/contact/" onclick="closeNav()">Contact</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-tag">/ 02 — About</div>
+  <h1 class="page-hero-title">The Story<br>Behind the <em>Sound</em></h1>
+  <p class="page-hero-sub">Worship artist. Creative director. Coach. Founder. The story of how one calling became many platforms.</p>
+</div>
+
+<!-- BIO -->
+<section id="bio">
+  <div class="bio-image-stack">
+    <img class="bio-image-main" src="https://i.ibb.co/nqNg213t/yemi-laja-1767088399-3798935294494434272-6006495913.jpg" alt="Yemi Laja" onerror="this.src='https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80'">
+    <div class="bio-image-accent"></div>
+  </div>
+  <div class="bio-content">
+    <div class="section-tag">Full Biography</div>
+    <h2 class="section-heading">Yemi <em>Laja</em></h2>
+
+    <blockquote class="bio-quote">
+      "I create music, stories, and platforms that inspire faith, culture, and global impact."
+    </blockquote>
+
+    <p class="bio-body">
+      Yemi Laja is a London-based worship artist, creative director, life coach, and the founder of Mastercraft Global Limited. With over 13 years of experience spanning music, spoken word, stage acting, film, and creative direction, Yemi has built a career rooted in purpose and shaped by excellence.
+    </p>
+    <p class="bio-body">
+      Her journey began in the pews of a local church — a young woman with a voice and a vision. That calling took her from intimate worship gatherings to main stages across the UK and beyond, from producing independent music to directing full-scale creative productions for organisations, churches, and media outlets.
+    </p>
+    <p class="bio-body">
+      In founding Mastercraft Global Limited, Yemi created a platform not just for her own work, but for other creatives. The company houses coaching programmes, design services, and the Global Talent Endorsement Programme — all aimed at discovering and elevating gifted individuals who might otherwise go unnoticed.
+    </p>
+    <p class="bio-body">
+      Whether she's leading worship at a 2,000-seat conference, coaching an emerging artist through a creative breakthrough, or directing a brand identity for a corporate client — Yemi brings the same quality: presence, precision, and passion.
+    </p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem;">
+      <a href="/yemi-laja-v4/contact/#booking" class="btn-primary">Book Yemi</a>
+      <a href="/yemi-laja-v4/music/" class="btn-outline">Hear the Music</a>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY TIMELINE -->
+<section id="journey">
+  <div class="section-tag">Career Highlights</div>
+  <h2 class="section-heading">The <em>Journey</em></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">2010</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">The Beginning — First Worship Album</div>
+        <p class="timeline-desc">Released her debut worship project, stepping into the public arena as a worship artist and establishing her distinct sound — soulful, spirit-led, and culturally rooted.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2014</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">Stage & Spoken Word — Theatre Performances</div>
+        <p class="timeline-desc">Expanded beyond music into stage performance and spoken word, appearing in multiple theatre productions across London and delivering spoken word pieces at national events.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2017</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">Founded Mastercraft Global Limited</div>
+        <p class="timeline-desc">Launched the creative and production company to provide a formal structure for her growing portfolio — housing design services, productions, and talent development under one roof.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2020</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">Global Talent Endorsement Programme — Launched</div>
+        <p class="timeline-desc">Created one of her most impactful initiatives: a structured programme to identify, endorse, and connect emerging creatives with global platforms and opportunities.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2025</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">Mastercraft: The EP · Worship in Chaos Event</div>
+        <p class="timeline-desc">Released her most acclaimed EP to date and announced "Worship in Chaos" — a landmark live event bringing together worship, community, and cultural engagement in one night.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div>
+    <div class="section-tag">Values & Vision</div>
+    <h2 class="section-heading">What Drives<br><em>Everything</em></h2>
+    <p style="font-size:0.95rem; line-height:1.9; color:rgba(245,240,232,0.65); margin:1.5rem 0 2rem;">
+      Every song, every stage, every programme — all of it is rooted in a set of convictions that Yemi holds close. These aren't corporate values. They're personal ones.
+    </p>
+    <div class="philosophy-values">
+      <div class="value-item">
+        <div class="value-number">01</div>
+        <div class="value-title">Excellence is a spiritual act.</div>
+        <p class="value-desc">Doing things well isn't about ego — it's about honour. Yemi believes every creative act is an offering, and offerings deserve the best.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-number">02</div>
+        <div class="value-title">Platforms exist to lift others.</div>
+        <p class="value-desc">Any platform Yemi builds is ultimately for the purpose of elevating others — not as a stage for herself, but as a launchpad for emerging voices.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-number">03</div>
+        <div class="value-title">Faith and culture are not opposites.</div>
+        <p class="value-desc">Yemi lives at the intersection of faith and creative culture — believing the two strengthen, not diminish, each other when brought together well.</p>
+      </div>
+    </div>
+  </div>
+  <div class="philosophy-image">
+    <img src="https://i.ibb.co/C3rM8WM5/yemi-02.png" alt="Yemi Laja" onerror="this.src='https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=700&q=80'">
+  </div>
+</section>
+
+<!-- BRANDS WORKED WITH -->
+<section id="brands">
+  <div class="section-tag" style="justify-content:center;">Collaborative History</div>
+  <h2 class="section-heading" style="text-align:center;">Brands & <em>Partners</em></h2>
+  <p class="brands-label" style="margin-top:1rem;">Organisations and platforms Yemi has worked with</p>
+  <div class="brands-row">
+    <div class="brand-item">Kingdom Connect Media</div>
+    <div class="brand-item">New Covenant Church</div>
+    <div class="brand-item">CreativeFaith UK</div>
+    <div class="brand-item">Gospel Arts Network</div>
+    <div class="brand-item">InspireFest</div>
+    <div class="brand-item">Arise Conference</div>
+    <div class="brand-item">Mastercraft Global</div>
+    <div class="brand-item">Impact Hub London</div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <div class="section-tag" style="justify-content:center;">Stay Connected</div>
+  <h2 class="section-heading" style="text-align:center;">Follow the <em>Journey</em></h2>
+  <div class="social-links">
+    <a href="#" class="social-link">Instagram</a>
+    <a href="#" class="social-link">TikTok</a>
+    <a href="#" class="social-link">Facebook</a>
+    <a href="https://youtu.be/Fa4kD-FzWSU" class="social-link">YouTube</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<div id="cta-banner">
+  <div>
+    <div class="cta-banner-tag">Ready to book?</div>
+    <h2 class="cta-banner-heading">Let's create<br>something meaningful.</h2>
+  </div>
+  <a href="/yemi-laja-v4/contact/" class="btn-dark">Get In Touch</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Yemi <span>Laja</span></div>
+  <nav class="footer-nav">
+    <a href="/yemi-laja-v4/about/">About</a>
+    <a href="/yemi-laja-v4/music/">Music</a>
+    <a href="/yemi-laja-v4/programs/">Programs</a>
+    <a href="/yemi-laja-v4/events/">Events</a>
+    <a href="/yemi-laja-v4/contact/">Contact</a>
+  </nav>
+  <div class="footer-legal">&copy; 2025 Yemi Laja · Powered by Mastercraft Global Limited</div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', closeNav);
+  function closeNav() { document.getElementById('mobileNav').classList.remove('open'); }
+</script>
+</body>
+</html>

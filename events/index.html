@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — Worship in Chaos | Yemi Laja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/yemi-laja-v4/style.css">
+<style>
+/* EVENT HERO */
+  #event-hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: flex-end;
+    padding: 8rem 4rem 5rem;
+    overflow: hidden;
+  }
+  .event-hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, #0E0E1A 0%, #0E0A1A 60%, #0E0E1A 100%);
+  }
+  .event-hero-pattern {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 70% 50%, rgba(196,99,122,0.12) 0%, transparent 60%);
+  }
+  .event-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(196,99,122,0.03) 59px, rgba(196,99,122,0.03) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(196,99,122,0.03) 59px, rgba(196,99,122,0.03) 60px);
+  }
+  .event-hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .event-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--deep); background: var(--gold); padding: 0.4rem 1rem; margin-bottom: 2rem; }
+  .event-main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(5rem, 12vw, 11rem); font-weight: 300; line-height: 0.85; letter-spacing: -0.02em; color: var(--text-light); }
+  .event-main-title em { font-style: italic; color: var(--gold); display: block; }
+  .event-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,248,245,0.6); margin-top: 1.5rem; margin-bottom: 2.5rem; }
+  .event-meta-row { display: flex; gap: 3rem; flex-wrap: wrap; padding: 2rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid rgba(201,168,76,0.2); margin-bottom: 2.5rem; }
+  .event-meta-item {}
+  .event-meta-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .event-meta-value { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--gold-light); }
+
+  /* Event About */
+  #event-about { padding: 7rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--white); }
+  .event-about-text p { font-size: 1rem; line-height: 1.9; color: var(--text-body); margin-bottom: 1.5rem; }
+  .event-visual-box { position: relative; padding: 2px; background: linear-gradient(135deg, var(--gold), transparent 50%, var(--gold)); }
+  .event-visual-box img { width: 100%; display: block; filter: brightness(0.8); }
+
+  /* Ticket Section */
+  #tickets { padding: 7rem 4rem; background: var(--linen); }
+  .tickets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 3rem; }
+  .ticket-card { background: var(--white); padding: 2.5rem; position: relative; border: 1px solid var(--stone); }
+  .ticket-card.featured { background: var(--ink); }
+  .ticket-card.featured::before { content: 'Most Popular'; position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep); background: var(--gold); padding: 0.3rem 0.8rem; }
+  .ticket-type { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .ticket-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--text-dark); }
+  .ticket-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; line-height: 1; color: var(--gold-light); margin-bottom: 0.3rem; }
+  .ticket-price-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem; }
+  .ticket-perks { list-style: none; margin-bottom: 2rem; }
+  .ticket-perks li { font-size: 0.88rem; color: rgba(61,44,40,0.7); padding: 0.55rem 0; border-bottom: 1px solid rgba(28,28,28,0.05); display: flex; gap: 0.8rem; align-items: flex-start; }
+  .ticket-perks li::before { content: '✦'; color: var(--gold); font-size: 0.45rem; margin-top: 0.5rem; flex-shrink: 0; }
+
+  /* Event Gallery */
+  #event-gallery { padding: 6rem 4rem; background: var(--linen); }
+  .event-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 2.5rem; }
+  .event-gallery-item { overflow: hidden; aspect-ratio: 4/3; }
+  .event-gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75); transition: transform 0.5s, filter 0.3s; }
+  .event-gallery-item:hover img { transform: scale(1.05); filter: brightness(0.9); }
+
+  /* Video embed */
+  #event-video { padding: 6rem 4rem; background: var(--white); }
+  .video-embed { width: 100%; max-width: 900px; margin: 3rem auto 0; aspect-ratio: 16/9; }
+  .video-embed iframe { width: 100%; height: 100%; border: none; border: 1px solid var(--border); }
+
+  /* Future Events */
+  #future-events { padding: 7rem 4rem; background: var(--ivory); }
+  .future-events-list { margin-top: 3rem; }
+  .future-event-item { display: grid; grid-template-columns: 140px 1fr auto; gap: 2rem; align-items: center; padding: 2rem 0; border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .future-event-date { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold); opacity: 0.6; }
+  .future-event-info {}
+  .future-event-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.3rem; }
+  .future-event-location { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+  .future-event-status { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--border); color: var(--text-muted); }
+  .future-event-status.open { border-color: var(--gold); color: var(--gold); }
+
+  /* CTA */
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a href="/yemi-laja-v4/" class="nav-logo">Yemi <span>Laja</span></a>
+  <ul class="nav-links">
+    <li><a href="/yemi-laja-v4/about/">About</a></li>
+    <li><a href="/yemi-laja-v4/music/">Music & Media</a></li>
+    <li><a href="/yemi-laja-v4/programs/">Programs</a></li>
+    <li><a href="/yemi-laja-v4/events/" class="active">Events</a></li>
+    <li><a href="/yemi-laja-v4/contact/">Contact</a></li>
+  </ul>
+  <a href="#tickets" class="nav-cta">Get Tickets</a>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileClose">✕</button>
+  <a href="/yemi-laja-v4/" onclick="closeNav()">Home</a>
+  <a href="/yemi-laja-v4/about/" onclick="closeNav()">About</a>
+  <a href="/yemi-laja-v4/music/" onclick="closeNav()">Music & Media</a>
+  <a href="/yemi-laja-v4/programs/" onclick="closeNav()">Programs</a>
+  <a href="/yemi-laja-v4/events/" onclick="closeNav()">Events</a>
+  <a href="/yemi-laja-v4/contact/" onclick="closeNav()">Contact</a>
+</nav>
+
+<!-- EVENT HERO -->
+<section id="event-hero">
+  <div class="event-hero-bg"></div>
+  <div class="event-hero-pattern"></div>
+  <div class="event-hero-grid"></div>
+  <div class="event-hero-content">
+    <div class="event-badge">Signature Event · July 2025</div>
+    <h1 class="event-main-title">
+      Worship<br>
+      <em>in Chaos</em>
+    </h1>
+    <p class="event-sub">A Night of Worship · Faith · Encounter · Community</p>
+    <div class="event-meta-row">
+      <div class="event-meta-item">
+        <div class="event-meta-label">Date</div>
+        <div class="event-meta-value">July 2025</div>
+      </div>
+      <div class="event-meta-item">
+        <div class="event-meta-label">Format</div>
+        <div class="event-meta-value">Live Worship Experience</div>
+      </div>
+      <div class="event-meta-item">
+        <div class="event-meta-label">Location</div>
+        <div class="event-meta-value">London, UK</div>
+      </div>
+      <div class="event-meta-item">
+        <div class="event-meta-label">Tickets</div>
+        <div class="event-meta-value">On Sale Now</div>
+      </div>
+    </div>
+    <a href="#tickets" class="btn-primary">Secure Your Place</a>
+  </div>
+</section>
+
+<!-- EVENT ABOUT -->
+<section id="event-about">
+  <div class="event-about-text">
+    <div class="section-tag">About the Event</div>
+    <h2 class="section-heading">When the World<br>Gets <em>Loud</em></h2>
+    <p>Worship in Chaos is Yemi Laja's signature live worship experience — a gathering designed for a world that rarely sits still. In a culture of noise, distraction, and relentless pace, this event creates a deliberate space for worship, encounter, and transformation.</p>
+    <p>This is more than a concert. It is a movement. Expect live original worship, spoken word, community moments, and an atmosphere where the sacred meets the cultural in a way few experiences do.</p>
+    <p>Whether you're a seasoned worshipper or someone who simply needs a moment of stillness — Worship in Chaos is for you.</p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem;">
+      <a href="#tickets" class="btn-primary">Get Your Ticket</a>
+      <a href="/yemi-laja-v4/contact/#booking" class="btn-outline">Book Yemi for Your Event</a>
+    </div>
+  </div>
+  <div>
+    <div class="event-visual-box">
+      <img src="https://i.ibb.co/C3rM8WM5/yemi-02.png" alt="Worship in Chaos" onerror="this.src='https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=700&q=80'">
+    </div>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section id="tickets">
+  <div class="section-tag">Get Your Place</div>
+  <h2 class="section-heading">Ticket <em>Options</em></h2>
+  <div class="tickets-grid">
+    <div class="ticket-card">
+      <div class="ticket-type">General Access</div>
+      <div class="ticket-name">Standard Entry</div>
+      <div class="ticket-price">£25</div>
+      <div class="ticket-price-note">per person</div>
+      <ul class="ticket-perks">
+        <li>General admission entry</li>
+        <li>Access to all worship sessions</li>
+        <li>Printed programme</li>
+      </ul>
+      <a href="/yemi-laja-v4/contact/" class="btn-outline" style="width:100%; text-align:center;">Purchase Ticket</a>
+    </div>
+    <div class="ticket-card featured">
+      <div class="ticket-type">Full Experience</div>
+      <div class="ticket-name">VIP Access</div>
+      <div class="ticket-price">£65</div>
+      <div class="ticket-price-note">per person</div>
+      <ul class="ticket-perks">
+        <li>Priority seating in reserved section</li>
+        <li>Pre-event meet & greet with Yemi</li>
+        <li>Exclusive signed programme</li>
+        <li>Early entry (30 minutes before doors)</li>
+        <li>Complimentary refreshments</li>
+      </ul>
+      <a href="/yemi-laja-v4/contact/" class="btn-primary" style="width:100%; text-align:center;">Purchase VIP</a>
+    </div>
+    <div class="ticket-card">
+      <div class="ticket-type">Group Booking</div>
+      <div class="ticket-name">Group (10+)</div>
+      <div class="ticket-price">£20</div>
+      <div class="ticket-price-note">per person · min 10</div>
+      <ul class="ticket-perks">
+        <li>Discounted group rate</li>
+        <li>Reserved block seating</li>
+        <li>Group coordinator support</li>
+        <li>Printed programmes</li>
+      </ul>
+      <a href="/yemi-laja-v4/contact/" class="btn-outline" style="width:100%; text-align:center;">Enquire for Groups</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT VIDEO -->
+<section id="event-video">
+  <div class="section-tag" style="justify-content:center;">Watch the Journey</div>
+  <h2 class="section-heading" style="text-align:center;">See <em>Yemi</em> Live</h2>
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/Fa4kD-FzWSU" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</section>
+
+<!-- EVENT GALLERY -->
+<section id="event-gallery">
+  <div class="section-tag">From the Stage</div>
+  <h2 class="section-heading">Event <em>Gallery</em></h2>
+  <div class="event-gallery-grid">
+    <div class="event-gallery-item">
+      <img src="https://i.ibb.co/nqNg213t/yemi-laja-1767088399-3798935294494434272-6006495913.jpg" alt="Performance" onerror="this.src='https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80'">
+    </div>
+    <div class="event-gallery-item">
+      <img src="https://i.ibb.co/C3rM8WM5/yemi-02.png" alt="Yemi" onerror="this.src='https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80'">
+    </div>
+    <div class="event-gallery-item">
+      <img src="https://i.ibb.co/1fWbtmcc/Everything-I-ve-Needed-Youtube-2.jpg" alt="Stage" onerror="this.src='https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80'">
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE EVENTS -->
+<section id="future-events">
+  <div class="section-tag">Looking Ahead</div>
+  <h2 class="section-heading">Coming <em>Events</em></h2>
+  <div class="future-events-list">
+    <div class="future-event-item">
+      <div class="future-event-date">Jul '25</div>
+      <div class="future-event-info">
+        <div class="future-event-name">Worship in Chaos — London</div>
+        <div class="future-event-location">London, United Kingdom</div>
+      </div>
+      <div class="future-event-status open">Tickets Available</div>
+    </div>
+    <div class="future-event-item">
+      <div class="future-event-date">Q4 '25</div>
+      <div class="future-event-info">
+        <div class="future-event-name">Mastercraft Showcase Night</div>
+        <div class="future-event-location">London, United Kingdom</div>
+      </div>
+      <div class="future-event-status">Coming Soon</div>
+    </div>
+    <div class="future-event-item">
+      <div class="future-event-date">2026</div>
+      <div class="future-event-info">
+        <div class="future-event-name">Worship in Chaos — International Tour</div>
+        <div class="future-event-location">Europe / West Africa</div>
+      </div>
+      <div class="future-event-status">TBC</div>
+    </div>
+  </div>
+</section>
+
+<div id="cta-banner">
+  <div>
+    <div class="cta-banner-tag">Want Yemi at your event?</div>
+    <h2 class="cta-banner-heading">Book a live performance<br>for your gathering.</h2>
+  </div>
+  <a href="/yemi-laja-v4/contact/#booking" class="btn-dark">Book Yemi</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Yemi <span>Laja</span></div>
+  <nav class="footer-nav">
+    <a href="/yemi-laja-v4/about/">About</a>
+    <a href="/yemi-laja-v4/music/">Music</a>
+    <a href="/yemi-laja-v4/programs/">Programs</a>
+    <a href="/yemi-laja-v4/events/">Events</a>
+    <a href="/yemi-laja-v4/contact/">Contact</a>
+  </nav>
+  <div class="footer-legal">&copy; 2025 Yemi Laja · Powered by Mastercraft Global Limited</div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', closeNav);
+  function closeNav() { document.getElementById('mobileNav').classList.remove('open'); }
+</script>
+</body>
+</html>
